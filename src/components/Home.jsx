@@ -6,7 +6,7 @@ function Home() {
 
     const [Hamsters, setHamsters] = useState([])
     const getHamsters = async () => {
-        const hamsters = await fetch('http://localhost:2048/hamsters')
+        const hamsters = await fetch('http://localhost:2048/api/hamsters')
             .then(res => res.json())
         console.log(hamsters)
         setHamsters(hamsters)
