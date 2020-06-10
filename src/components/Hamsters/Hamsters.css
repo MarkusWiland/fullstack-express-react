@@ -1,0 +1,6 @@
+.Hamsters {
+    display: grid;
+    grid-template-columns: repeat(2, 250px);
+    justify-content: center;
+
+}

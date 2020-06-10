@@ -1,25 +1,53 @@
 import React from 'react';
-import logo from './logo.svg';
+import Home from './components/Home'
+import Hamsters from './components/Hamsters/Hamsters'
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from 'react-router-dom';
 import './App.css';
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <header className="menu">
+          <h1 className="logo">Markus Wiland</h1>
+          <nav className="navigation">
+            <ul className="nav_links">
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/hamsters">Hamsters</Link>
+              </li>
+
+            </ul>
+          </nav>
+          <h2 className="cta"><button>Click me</button></h2>
+        </header>
+        <main className="container">
+          <section>
+            <Switch>
+              <Route path="/hamsters">
+                <Hamsters />
+              </Route>
+
+              <Route path="/">
+                <Home />
+              </Route>
+            </Switch>
+          </section>
+        </main>
+        <footer>
+          <h3>Footer</h3>
+        </footer>
+      </div>
+    </Router>
   );
 }
 
