@@ -4,15 +4,13 @@ import HamsterCard from './Hamsters/HamsterCard/HamsterCard'
 import './Home.css'
 function Home() {
 
-    const [Hamsters, setHamsters] = useState([])
+    const [hamsters, setHamsters] = useState([])
     const getHamsters = async () => {
-
-
         try {
-            const hamsters = await fetch('http://localhost:2048/api/hamsters')
+            const data = await fetch('http://localhost:2048/api/hamsters')
                 .then(res => res.json())
-            console.log(hamsters)
-            setHamsters(hamsters)
+
+            setHamsters(data)
         } catch (err) {
             console.error(err)
 
@@ -27,7 +25,7 @@ function Home() {
     return (
         <div className="Home">
 
-            {Hamsters.map((hamster) => <HamsterCard hamster={hamster} />)}
+            {hamsters.map((hamster) => <HamsterCard hamster={hamster} key={hamster.id} />)}
         </div>
     );
 }

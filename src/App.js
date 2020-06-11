@@ -1,6 +1,7 @@
 import React from 'react';
 import Home from './components/Home'
 import Hamsters from './components/Hamsters/Hamsters'
+import Battle from './components/Battle/Battle'
 
 import {
   BrowserRouter as Router,
@@ -25,6 +26,9 @@ function App() {
               <li>
                 <Link to="/hamsters">Hamsters</Link>
               </li>
+              <li>
+                <Link to="/battle">Battle</Link>
+              </li>
 
             </ul>
           </nav>
@@ -33,6 +37,9 @@ function App() {
         <main className="container">
           <section>
             <Switch>
+              <Route path="/battle">
+                <Battle />
+              </Route>
               <Route path="/hamsters">
                 <Hamsters />
               </Route>

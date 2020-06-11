@@ -4,8 +4,13 @@
   box-sizing: border-box;
 }
 
-
-
+html,body {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
 .App {
   height: 100%;
   width: 100%;
@@ -35,14 +40,14 @@ header.menu {
 /* main container */
 
 main.container {
-  width: 80%;
-  height: 100%;
+  flex: 1 0 auto;
   background-color: red;
-  margin: 0 auto;
+
 }
 
 /* footer */
 
 footer {
   background-color: blue;
+  height: 50px;
 }

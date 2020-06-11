@@ -1,10 +1,11 @@
 const express = require('express')
-const { auth } = require('./firebase');
+const cors = require('cors')
 const app = express();
 const serverPort = process.env.PORT || 2048;
 
 // alla post.body tolkas som json
 app.use(express.json())
+app.use(cors())
 
 app.use(express.static(__dirname + '/../build'));
 
