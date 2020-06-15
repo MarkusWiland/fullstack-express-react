@@ -2,6 +2,7 @@ import React from 'react';
 import Home from './components/Home'
 import Hamsters from './components/Hamsters/Hamsters'
 import Battle from './components/Battle/Battle'
+import TopStats from './components/Stats/TopStats'
 
 import {
   BrowserRouter as Router,
@@ -12,7 +13,6 @@ import {
 import './App.css';
 
 function App() {
-
   return (
     <Router>
       <div className="App">
@@ -29,6 +29,9 @@ function App() {
               <li>
                 <Link to="/battle">Battle</Link>
               </li>
+              <li>
+                <Link to="/topstats">stats</Link>
+              </li>
 
             </ul>
           </nav>
@@ -42,6 +45,9 @@ function App() {
               </Route>
               <Route path="/hamsters">
                 <Hamsters />
+              </Route>
+              <Route path="/topstats">
+                <TopStats />
               </Route>
 
               <Route path="/">

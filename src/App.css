@@ -9,6 +9,7 @@ html,body {
 }
 body {
   display: flex;
+  font-family: 'Alegreya', serif;
   flex-direction: column;
 }
 .App {

@@ -1,29 +1,23 @@
 import React from 'react';
 import './HamsterCard.css'
 
-function HamsterCard({ hamster }) {
+function HamsterCard({ hamster, ham }) {
 
-    const winner = (e) => {
-        console.log(e.currentTarget.id)
-    }
+
 
     return (
         <>
-
-            <div className="HamsterCard" onClick={winner} id={hamster.id}>
-                <img src={`http://localhost:2048/assets/${hamster.imgName}`} className="hamsterImage" />
-                <header>{hamster.name}</header>
-                <article>
-                    <h3>{hamster.favFood}</h3>
-                    <h3>{hamster.id}</h3>
-                    <h4>{hamster.age}</h4>
+            <div className="HamsterCard" onClick={ham} >
+                <img src={`/assets/${hamster.imgName}`} alt="Hamster" className="hamsterImage" />
+                <header className="header">{hamster.name}</header>
+                <article className="hamsterInfo">
+                    <span> Favroitmat: <h3>{hamster.favFood}</h3></span>
+                   Hamster ID: <h3>{hamster.id}</h3>
+                   Ålder: <h4>{hamster.age}</h4>
                 </article>
             </div>
 
-
-
         </>
-
 
     );
 }
