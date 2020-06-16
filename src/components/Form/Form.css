@@ -1,0 +1,32 @@
+
+.formContainer {
+    margin: 0 auto;
+}
+form {
+    width: 50%;
+    margin: 0 auto;
+}
+label {
+    
+}
+input[type=text] {
+    width: 100%;
+ 
+    display: block;
+    border: 1px solid rgb(161, 161, 161);
+    border-radius: 2px;
+    padding:5px;
+    background-color: rgb(251, 251, 251);
+}
+
+button {
+    padding: 10px;
+    margin: 5px 0;
+    background-color: rgb(251, 251, 251);
+    border: 1px solid rgb(161, 161, 161);
+     color: black;
+     width: 100%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}

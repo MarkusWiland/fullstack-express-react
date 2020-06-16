@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import StatsTable from './Table/StatsTable'
 
-import './BottomStats.css'
+import './AllStats.css'
 import { Link } from 'react-router-dom';
 function BottomStats() {
     const [stats, setState] = useState(null)
@@ -24,9 +24,16 @@ function BottomStats() {
     }, [])
     return (
         <div className="stats">
-            <Link to="/TopStats">Top</Link>
-            <Link to="/BottomStats">Bottom</Link>
-            {stats ? <StatsTable stats={stats} /> : null}
+            <header className="undermenu">
+                <li>
+                    <Link to="/allstats" className="atag">All</Link>
+                </li>
+                <li> <Link to="/topstats" className="atag">Top</Link></li>
+                <li> <Link to="/bottomstats" className="atag">Bottom</Link></li>
+            </header>
+            <section className="info">
+                {stats ? <StatsTable stats={stats} /> : null}
+            </section>
         </div>
     );
 }

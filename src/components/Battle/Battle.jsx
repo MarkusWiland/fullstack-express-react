@@ -3,28 +3,31 @@ import HamsterCard from '../Hamsters/HamsterCard/HamsterCard';
 import Winner from '../Hamsters/Winner'
 import './Battle.css'
 function Battle() {
+    //declaring useState 
     const [randomHamster1, setRandomHamster1] = useState(null)
     const [randomHamster2, setRandomHamster2] = useState(null)
-    const [match, setMatch] = useState({})
-    const updateHamster = async (winningHamster) => {
+    const [showWinner, setShowWinner] = useState(false)
+    const [match, setMatch] = useState(null)
+
+    // functions
+    const postHamster = async (winningHamster) => {
         const url = '/api/games'
         const opponent = winningHamster === randomHamster1 ? randomHamster2 : randomHamster1;
-        const date = new Date().toDateString();
+
         const matchGame = {
-            id: 1,
-            timeStamp: date,
+            id: Math.ceil(Math.random() * 99999999),
             contestants: { winningHamster, opponent },
             winner: winningHamster,
         }
-        const response = await fetch(url, {
+        await fetch(url, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: matchGame
+            body: JSON.stringify(matchGame)
         })
-        setMatch(response)
+        setShowWinner(true)
+        setMatch(matchGame)
     }
-
-
+    // useEffect, render once
     useEffect(() => {
         const getHamsters = async () => {
             // kanske behöver en loop, för att se till så det blir olika hamstrar do while loop.
@@ -40,18 +43,27 @@ function Battle() {
 
     }, [])
     return (
-        <div className="Battle">
+        <div className="battle">
+            <h1>Battle Stars</h1>
             <section className="hamsterSection" >
-                {
-                    randomHamster1 ? <HamsterCard ham={updateHamster} hamster={randomHamster1} /> : null}
-                <h3>VS</h3>
-                {randomHamster2 ? <HamsterCard ham={updateHamster} hamster={randomHamster2} /> : null}
+                <aside>
+
+                    {randomHamster1 ? <HamsterCard ham={postHamster} hamster={randomHamster1} /> : null}
+                </aside>
+                <aside> <h3>VS</h3></aside>
+
+                <aside>
+
+                    {randomHamster2 ? <HamsterCard ham={postHamster} hamster={randomHamster2} /> : null}
+                </aside>
             </section>
 
-            <div className="winner">
-                <Winner match={match} />
+            <section className={showWinner}>
 
-            </div>
+                {match ? <Winner match={match.winner} /> : null}
+
+
+            </section>
         </div>
     );
 }

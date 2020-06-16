@@ -3,18 +3,22 @@ import './HamsterCard.css'
 
 function HamsterCard({ hamster, ham }) {
 
-
+    const handleClick = () => {
+        ham(hamster)
+    }
 
     return (
         <>
-            <div className="HamsterCard" onClick={ham} >
+            <div className="HamsterCard" onClick={handleClick} >
                 <img src={`/assets/${hamster.imgName}`} alt="Hamster" className="hamsterImage" />
-                <header className="header">{hamster.name}</header>
-                <article className="hamsterInfo">
-                    <span> Favroitmat: <h3>{hamster.favFood}</h3></span>
-                   Hamster ID: <h3>{hamster.id}</h3>
-                   Ålder: <h4>{hamster.age}</h4>
-                </article>
+                <section className="textArea">
+                    <aside>
+                        <span>Name:</span> {hamster.name}</aside>
+                    <aside>
+                        <span> Favroitmat:</span>  {hamster.favFood}</aside>
+                    <aside> <span>Hamster ID:</span> {hamster.id}</aside>
+                    <aside> <span> Ålder:</span> {hamster.age}</aside>
+                </section>
             </div>
 
         </>

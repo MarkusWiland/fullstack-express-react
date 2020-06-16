@@ -1,12 +1,17 @@
-.Battle {
+.battle {
    width: 80%;
    margin: 0 auto;
-   height: 100%;
 }
-
-section.hamsterSection {
+.battle h1{
+    text-align: center;
+}
+ .hamsterSection {
     width: 100%;
     display: flex;
-    justify-content: center;
-    
+    background-color: #fafaedb7;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5rem;
+    border: 2px solid #dcdcc6;
 }
+

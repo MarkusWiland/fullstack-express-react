@@ -2,22 +2,23 @@
    margin: 2rem 0 2rem 0;
    width: 250px;
    height: 100%;
-   background-color: #fff;
-   box-shadow: 2px 2px 4px 2px rgba(0,0,0,0.5);
+   border-radius: 5px;
+   background-color: #fdfdf8;
+   box-shadow: 1px 1px 3px 1px rgba(107, 107, 107, 0.5);
+   cursor: pointer;
 }
 
-.header {
-   width: 100%; 
-   font-size: 1.3em;
-   text-align: center;
-   font-weight: 500;
+.textArea {
+   padding:5px;
 }
-
-
-
+.textArea span {
+   font-weight: bold;
+}
 
 .hamsterImage {
    width: 250px;
    height: 180px;
+   border-top-left-radius: 5px;
+   border-top-right-radius: 5px;
    object-fit: cover;
 }

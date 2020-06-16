@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import StatsTable from './Table/StatsTable'
+
 
 import './AllStats.css'
-import { Link } from 'react-router-dom';
-function TopStats() {
+import {
+    Link
+} from 'react-router-dom';
+function AllStats() {
     const [stats, setState] = useState(null)
 
     useEffect(() => {
         const getStats = async () => {
             try {
-                const URL = '/api/charts/top'
+                const URL = '/api/stats/total'
                 const response = await fetch(URL)
                     .then(res => res.json())
 
@@ -31,11 +33,12 @@ function TopStats() {
                 <li> <Link to="/topstats" className="atag">Top</Link></li>
                 <li> <Link to="/bottomstats" className="atag">Bottom</Link></li>
             </header>
-            <section className="info">
-                {stats ? <StatsTable stats={stats} /> : null}
+            <section className="infoTotalGames">
+                {!!stats && stats.msg}
             </section>
         </div>
+
     );
 }
 
-export default TopStats;
+export default AllStats;

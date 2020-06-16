@@ -27,26 +27,68 @@ router.get('/', async (req, res) => {
 
 
 router.post('/', async (req, res) => {
-
     try {
-        // get the right date for posting.
+        const winner = req.body.winner;
+
+        const loser = Object.values(req.body.contestants).filter((ham) => ham.id !== winner.id)[0];
+        await updateGame(req.body);
+
+        await updateHamster(winner, true);
+        await updateHamster(loser, false);
+        res.status(200).send({ msg: "game was recorded" });
+    } catch (err) {
+        console.error(err)
+        res.status(500).send(err)
+    }
+})
+
+async function updateGame(gameObject) {
+    try {
         let date = new Date().toDateString();
-        // post in new object with, id, timeStamp, contestants, winner
         await db.collection('games').doc().set({
-            id: req.body.id,
+            id: gameObject.id,
             timeStamp: date,
-            contestants: req.body.contestants,
-            winner: req.body.winner
+            contestants: gameObject.contestants,
+            winner: gameObject.winner
+
         })
-        res.status(200).send({ msg: "game is on" })
 
     } catch (err) {
         console.error(err)
 
-        res.status(500).send(err)
     }
+}
 
-})
+async function updateHamster(contestant, isWinner) {
+    try {
+
+        let hamsterId;
+        let results;
+        let hamster = await db.collection('hamsters')
+            .where("id", "==", parseInt(contestant.id)).get();
+
+        hamster.forEach(async ham => {
+            let hamsterData = ham.data()
+            console.log(hamsterData)
+            hamsterId = ham.id
+            console.log(hamsterId)
+            results = {
+                wins: hamsterData.wins + Number(isWinner),
+                defeats: hamsterData.defeats + Number(!isWinner),
+                games: hamsterData.games + 1
+            }
+            console.log(results)
+            db.collection('hamsters').doc(hamsterId).update(results);
+
+        })
+
+    } catch (err) {
+        console.error(err)
+
+    }
+}
+
+
 
 
 

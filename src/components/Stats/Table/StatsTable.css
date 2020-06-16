@@ -2,3 +2,9 @@
     width: 100%;
     text-align: center;
 }
+td {
+    padding: 8px;
+}
+tbody tr:nth-child(odd) {
+    background-color: #dcdcc6;
+}

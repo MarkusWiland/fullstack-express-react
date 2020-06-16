@@ -2,7 +2,11 @@ import React from 'react';
 import Home from './components/Home'
 import Hamsters from './components/Hamsters/Hamsters'
 import Battle from './components/Battle/Battle'
+import AllStats from './components/Stats/AllStats'
 import TopStats from './components/Stats/TopStats'
+import BottomStats from './components/Stats/BottomStats'
+import Form from './components/Form/Form'
+import Footer from './components/Footer/Footer'
 
 import {
   BrowserRouter as Router,
@@ -21,24 +25,27 @@ function App() {
           <nav className="navigation">
             <ul className="nav_links">
               <li>
-                <Link to="/">Home</Link>
+                <Link to="/" className="atag">Home</Link>
               </li>
               <li>
-                <Link to="/hamsters">Hamsters</Link>
+                <Link to="/hamsters" className="atag">Hamsters</Link>
               </li>
               <li>
-                <Link to="/battle">Battle</Link>
+                <Link to="/battle" className="atag">Battle</Link>
               </li>
               <li>
-                <Link to="/topstats">stats</Link>
+                <Link to="/allstats" className="atag">stats</Link>
+              </li>
+              <li>
+                <Link to="/form" className="atag">form</Link>
               </li>
 
             </ul>
           </nav>
-          <h2 className="cta"><button>Click me</button></h2>
+
         </header>
         <main className="container">
-          <section>
+          <section className="section">
             <Switch>
               <Route path="/battle">
                 <Battle />
@@ -46,8 +53,17 @@ function App() {
               <Route path="/hamsters">
                 <Hamsters />
               </Route>
+              <Route path="/allstats">
+                <AllStats />
+              </Route>
               <Route path="/topstats">
                 <TopStats />
+              </Route>
+              <Route path="/bottomstats">
+                <BottomStats />
+              </Route>
+              <Route path="/form">
+                <Form />
               </Route>
 
               <Route path="/">
@@ -57,7 +73,7 @@ function App() {
           </section>
         </main>
         <footer>
-          <h3>Footer</h3>
+          <Footer />
         </footer>
       </div>
     </Router>
