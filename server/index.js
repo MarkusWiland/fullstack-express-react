@@ -14,6 +14,8 @@ app.use(express.static(__dirname + '/../build'));
 app.use('/', express.static('public'))
 app.use('/assets', express.static('hamsters'))
 
+const battleRoute = require('./routes/battle');
+app.use('/api/battle', battleRoute);
 
 const hamstersroute = require('./routes/hamsters');
 app.use('/api/hamsters', hamstersroute);

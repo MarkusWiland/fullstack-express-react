@@ -1,12 +1,12 @@
 import React from 'react';
 import Home from './components/Home'
-import Hamsters from './components/Hamsters/Hamsters'
 import Battle from './components/Battle/Battle'
 import AllStats from './components/Stats/AllStats'
 import TopStats from './components/Stats/TopStats'
 import BottomStats from './components/Stats/BottomStats'
 import Form from './components/Form/Form'
 import Footer from './components/Footer/Footer'
+import MatchUp from './components/MatchUp/MatchUp'
 
 import {
   BrowserRouter as Router,
@@ -21,14 +21,14 @@ function App() {
     <Router>
       <div className="App">
         <header className="menu">
-          <h1 className="logo">Markus Wiland</h1>
+          <h1 className="logo">Hamster Waaars</h1>
           <nav className="navigation">
             <ul className="nav_links">
               <li>
                 <Link to="/" className="atag">Home</Link>
               </li>
               <li>
-                <Link to="/hamsters" className="atag">Hamsters</Link>
+                <Link to="/matchup" className="atag">MatchUp</Link>
               </li>
               <li>
                 <Link to="/battle" className="atag">Battle</Link>
@@ -50,8 +50,8 @@ function App() {
               <Route path="/battle">
                 <Battle />
               </Route>
-              <Route path="/hamsters">
-                <Hamsters />
+              <Route path="/matchup">
+                <MatchUp />
               </Route>
               <Route path="/allstats">
                 <AllStats />

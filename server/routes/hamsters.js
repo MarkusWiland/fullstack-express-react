@@ -62,6 +62,26 @@ router.get('/:id', async (req, res) => {
     }
 
 })
+
+router.post('/', async (req, res) => {
+    try {
+        let newHamster =
+            await db.collection('hamsters').doc().set({
+                id: req.body.id,
+                name: req.body.name,
+                age: req.body.age,
+                loves: req.body.loves,
+                favFood: req.body.favFood,
+                games: 0,
+                wins: 0,
+                defeats: 0
+            })
+        res.status(200).send({ msg: newHamster })
+    } catch (err) {
+        console.error(err)
+
+    }
+})
 router.put('/:id/result', async (req, res) => {
     try {
         let hamsterId;
@@ -89,6 +109,7 @@ router.put('/:id/result', async (req, res) => {
         res.status(500).send(err)
     }
 })
+
 
 
 

@@ -6,10 +6,30 @@ form {
     width: 50%;
     margin: 0 auto;
 }
-label {
-    
+.look{
+    width: 100%;
+    background-color: #fbfbf1;
+    border: 1px solid #dcdcc6;
+}
+.lookContainer{
+    width: 50%;
+    margin: 0 auto;
+    padding-top:10px;
+}
+.lookContainer aside {
+    padding: 2px;
+
 }
 input[type=text] {
+    width: 100%;
+ 
+    display: block;
+    border: 1px solid rgb(161, 161, 161);
+    border-radius: 2px;
+    padding:5px;
+    background-color: rgb(251, 251, 251);
+}
+input[type=number] {
     width: 100%;
  
     display: block;
