@@ -1,7 +1,7 @@
 import React from 'react';
 import Home from './components/Home'
 import Battle from './components/Battle/Battle'
-import AllStats from './components/Stats/AllStats'
+import TotalStats from './components/Stats/TotalStats'
 import TopStats from './components/Stats/TopStats'
 import BottomStats from './components/Stats/BottomStats'
 import Form from './components/Form/Form'
@@ -15,6 +15,7 @@ import {
   Link
 } from 'react-router-dom';
 import './App.css';
+
 
 function App() {
 
@@ -35,7 +36,7 @@ function App() {
                 <Link to="/battle" className="atag">Battle</Link>
               </li>
               <li>
-                <Link to="/allstats" className="atag">stats</Link>
+                <Link to="/totalstats" className="atag">stats</Link>
               </li>
               <li>
                 <Link to="/form" className="atag">form</Link>
@@ -49,7 +50,7 @@ function App() {
           <section className="section">
             <Switch>
               <Route path="/battle/:id1/:id2">
-                <Battle />
+                <Battle hamster />
               </Route>
               <Route path="/battle">
                 <Battle />
@@ -57,8 +58,8 @@ function App() {
               <Route path="/matchup">
                 <MatchUp />
               </Route>
-              <Route path="/allstats">
-                <AllStats />
+              <Route path="/totalstats">
+                <TotalStats />
               </Route>
               <Route path="/topstats">
                 <TopStats />

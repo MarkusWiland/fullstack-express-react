@@ -1,39 +1,19 @@
 import React, { useState, useEffect } from 'react';
 
-
-import './AllStats.css'
+import { fetchTotalGames, fetchMatchup } from './helpers/stats.js'
+import './TotalStats.css'
 import {
     Link
 } from 'react-router-dom';
-function AllStats() {
-    const [stats, setState] = useState(null)
-    const [games, setGames] = useState([])
+function TotalStats() {
+    const [totalGames, setTotalGames] = useState(null)
+    const [matchup, setMatchup] = useState([])
 
     useEffect(() => {
-        const getStats = async () => {
-            try {
-                const URL = '/api/stats/total'
-                const res = await fetch(URL)
-                const total = await res.json();
-                setState(total)
-            } catch (err) {
-                console.error(`This didn't work, ${err}`)
-            }
-        }
-        const getMatches = async () => {
-            try {
-                const URL = '/api/games'
-                const res = await fetch(URL)
-                const total = await res.json();
-
-                setGames(total)
-            } catch (err) {
-                console.error(`This didn't work, ${err}`)
-            }
-        }
-        getMatches()
-        getStats()
+        fetchTotalGames(setTotalGames);
+        fetchMatchup(setMatchup);
     }, [])
+
     return (
         <div className="stats">
             <header className="undermenu">
@@ -44,7 +24,7 @@ function AllStats() {
                 <li> <Link to="/bottomstats" className="atag">Bottom</Link></li>
             </header>
             <section className="infoTotalGames">
-                {!!stats && stats.msg}
+                {!!totalGames && totalGames.msg}
 
                 <table className="table">
                     <thead>
@@ -56,7 +36,7 @@ function AllStats() {
                         </tr>
                     </thead>
                     <tbody>
-                        {games.map((hamster, index) => (
+                        {matchup.map((hamster, index) => (
                             <tr key={index}>
                                 <td>{hamster.name}</td>
 
@@ -70,4 +50,4 @@ function AllStats() {
     );
 }
 
-export default AllStats;
+export default TotalStats;

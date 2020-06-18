@@ -1,26 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import StatsTable from './Table/StatsTable'
-
-import './AllStats.css'
+import { fetchBottomHamsters } from "./helpers/stats.js"
+import './TotalStats.css'
 import { Link } from 'react-router-dom';
 function BottomStats() {
-    const [stats, setState] = useState(null)
-
+    const [bottomFive, setBottomFive] = useState([]);
     useEffect(() => {
-        const getStats = async () => {
-            try {
-                const URL = '/api/charts/bottom'
-                const response = await fetch(URL)
-                    .then(res => res.json())
-                console.log(response)
-                setState(response)
-            } catch (err) {
-                console.error(`This didn't work, ${err}`)
-            }
-        }
-        getStats()
-
-
+        fetchBottomHamsters(setBottomFive)
     }, [])
     return (
         <div className="stats">
@@ -32,7 +18,7 @@ function BottomStats() {
                 <li> <Link to="/bottomstats" className="atag">Bottom</Link></li>
             </header>
             <section className="info">
-                {stats ? <StatsTable stats={stats} /> : null}
+                {bottomFive ? <StatsTable stats={bottomFive} /> : null}
             </section>
         </div>
     );
