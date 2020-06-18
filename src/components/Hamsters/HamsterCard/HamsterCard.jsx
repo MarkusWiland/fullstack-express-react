@@ -7,6 +7,8 @@ function HamsterCard({ hamster, ham }) {
         ham(hamster)
     }
 
+
+
     return (
         <>
             <div className="HamsterCard" onClick={handleClick} >

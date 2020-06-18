@@ -30,6 +30,12 @@ const statsRoute = require('./routes/stats');
 app.use('/api/stats', statsRoute);
 
 
-
+app.get('/*', function (req, res) {
+    res.sendFile(path.join(__dirname + '/../build/index.html'), function (err) {
+        if (err) {
+            res.status(500).send(err)
+        }
+    })
+})
 
 app.listen(serverPort, () => console.log('Server is listening on port ' + serverPort));

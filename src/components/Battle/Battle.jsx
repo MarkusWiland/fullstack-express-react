@@ -16,7 +16,6 @@ function Battle() {
     const postHamster = async (winningHamster) => {
         const url = '/api/battle'
         const opponent = winningHamster === randomHamster1 ? randomHamster2 : randomHamster1;
-
         const matchGame = {
             id: Math.ceil(Math.random() * 99999999),
             contestants: { winningHamster, opponent },
@@ -47,7 +46,6 @@ function Battle() {
             .then(res => res.json())
         setRandomHamster2(hamsters)
     }
-
 
     // useEffect, render once
     useEffect(() => {

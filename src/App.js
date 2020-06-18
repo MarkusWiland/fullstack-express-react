@@ -17,6 +17,7 @@ import {
 import './App.css';
 
 function App() {
+
   return (
     <Router>
       <div className="App">
@@ -47,6 +48,9 @@ function App() {
         <main className="container">
           <section className="section">
             <Switch>
+              <Route path="/battle/:id1/:id2">
+                <Battle />
+              </Route>
               <Route path="/battle">
                 <Battle />
               </Route>
@@ -65,7 +69,6 @@ function App() {
               <Route path="/form">
                 <Form />
               </Route>
-
               <Route path="/">
                 <Home />
               </Route>
@@ -78,6 +81,7 @@ function App() {
       </div>
     </Router>
   );
+
 }
 
 export default App;

@@ -25,6 +25,23 @@ router.get('/', async (req, res) => {
     }
 })
 
+router.get('/:id1/:id2', async (req, res) => {
+    try {
+        let gameArray = []
+        let games = await db.collection('games')
+            .where('contestants.opponent.id', '==', parseInt(req.params.id1))
+            .where('contestants.winningHamster.id', '==', parseInt(req.params.id2))
+            .get();
+        games.forEach(game => {
+            gameArray.push(game.data())
+        })
+        console.log(gameArray);
+        res.status(200).send(gameArray)
+    } catch (err) {
+        res.status(500)
+        console.error(err)
+    }
+})
 
 router.post('/', async (req, res) => {
     try {

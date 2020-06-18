@@ -2,25 +2,40 @@ import React, { useState, useEffect } from 'react';
 import './Form.css'
 
 function Form() {
-    let [ham, setHam] = useState([])
-
-    let [id, setId] = useState(ham.length)
-    let [name, setName] = useState('')
-    let [loves, setLoves] = useState('')
-
-    let [favFood, setFavFood] = useState('')
-    let [age, setAge] = useState(0)
+    const [ham, setHam] = useState([])
+    const [image, setImage] = useState({ preview: "", raw: "" });
+    const [id, setId] = useState(ham.length)
+    const [name, setName] = useState('')
+    const [loves, setLoves] = useState('')
+    const [favFood, setFavFood] = useState('')
+    const [age, setAge] = useState(0)
 
     const getAllHamsters = async () => {
         const hamsters = await fetch('/api/hamsters')
             .then(res => res.json())
         setHam(hamsters)
     }
+    const handleChange = e => {
+        if (e.target.files.length) {
+            setImage({
+                preview: URL.createObjectURL(e.target.files[0]),
+                raw: e.target.files[0]
+            });
+        }
+    };
+    const handleUpload = async e => {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append("image", image.raw);
 
-    useEffect(() => {
-        getAllHamsters()
-    }, [])
-
+        await fetch("YOUR_URL", {
+            method: "POST",
+            headers: {
+                "Content-Type": "multipart/form-data"
+            },
+            body: formData
+        });
+    };
     const handleSubmit = async (e) => {
         try {
             e.preventDefault()
@@ -32,6 +47,10 @@ function Form() {
             console.error(err)
         }
     }
+
+    useEffect(() => {
+        getAllHamsters()
+    }, [])
 
 
     return (
@@ -51,6 +70,13 @@ function Form() {
                     placeholder="write the name of the hamster..."
 
                 />
+                <label>Image:</label>
+                <input type="file" name="Image"
+                    onChange={handleChange}
+                    placeholder="load image.."
+
+                />
+                <button onClick={handleUpload}>Upload</button>
                 <label>Age:</label>
                 <input type="number" name="Age" min="1" max="100"
                     value={age}
@@ -90,9 +116,10 @@ function Form() {
     );
 }
 
-const postNewHamster = async (name, age, favFood, loves) => {
+const postNewHamster = async (name, img, age, favFood, loves) => {
     const hamster = {
         name,
+        img,
         age,
         favFood,
         loves,
