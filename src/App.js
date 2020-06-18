@@ -4,7 +4,7 @@ import Battle from './components/Battle/Battle'
 import TotalStats from './components/Stats/TotalStats'
 import TopStats from './components/Stats/TopStats'
 import BottomStats from './components/Stats/BottomStats'
-import Form from './components/Form/Form'
+import Upload from './components/Form/Upload'
 import Footer from './components/Footer/Footer'
 import MatchUp from './components/MatchUp/MatchUp'
 
@@ -39,7 +39,7 @@ function App() {
                 <Link to="/totalstats" className="atag">stats</Link>
               </li>
               <li>
-                <Link to="/form" className="atag">form</Link>
+                <Link to="/upload" className="atag">upload</Link>
               </li>
 
             </ul>
@@ -49,33 +49,24 @@ function App() {
         <main className="container">
           <section className="section">
             <Switch>
-              <Route path="/battle/:id1/:id2">
-                <Battle hamster />
-              </Route>
-              <Route path="/battle">
-                <Battle />
-              </Route>
-              <Route path="/matchup/:id1/:id2">
-                <MatchUp />
-              </Route>
-              <Route path="/matchup">
-                <MatchUp />
-              </Route>
-              <Route path="/totalstats">
-                <TotalStats />
-              </Route>
-              <Route path="/topstats">
-                <TopStats />
-              </Route>
-              <Route path="/bottomstats">
-                <BottomStats />
-              </Route>
-              <Route path="/form">
-                <Form />
-              </Route>
-              <Route path="/">
-                <Home />
-              </Route>
+              <Route path="/battle/:id1/:id2" component={Battle} />
+
+              <Route path="/battle" exact component={Battle} />
+
+              <Route path="/matchup/:id1/:id2" component={MatchUp} />
+
+              <Route path="/matchup" exact component={MatchUp} />
+
+              <Route path="/totalstats" component={TotalStats} />
+
+              <Route path="/topstats" component={TopStats} />
+
+              <Route path="/bottomstats" component={BottomStats} />
+
+              <Route path="/upload" component={Upload} />
+
+              <Route path="/" exact component={Home} /> >
+
             </Switch>
           </section>
         </main>

@@ -70,6 +70,7 @@ router.post('/', async (req, res) => {
                 id: req.body.id,
                 name: req.body.name,
                 age: req.body.age,
+                imgName: req.body.imageName,
                 loves: req.body.loves,
                 favFood: req.body.favFood,
                 games: 0,

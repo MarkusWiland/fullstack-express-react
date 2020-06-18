@@ -1,7 +1,7 @@
 import React from 'react';
 import './HamsterCard.css'
 
-function HamsterCard({ hamster, ham }) {
+function HamsterCard({ hamster, ham, idHamster }) {
 
     const handleClick = () => {
         ham(hamster)
@@ -19,7 +19,11 @@ function HamsterCard({ hamster, ham }) {
                     <aside> <span> Ålder:</span> {hamster.age}</aside>
                 </section>
             </div>
-
+            <section>
+                {idHamster.map((hamster) => (
+                    <aside key={hamster.id}>{hamster.name}</aside>
+                ))}
+            </section>
         </>
 
     );
