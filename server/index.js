@@ -2,6 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const app = express();
 const serverPort = process.env.PORT || 2048;
+const path = require('path');
 
 // alla post.body tolkas som json
 app.use(express.json())
