@@ -9,11 +9,11 @@ app.use(express.json())
 app.use(cors())
 
 app.use(express.static(__dirname + '/../build'));
-app.use('/assets', express.static(__dirname + 'hamsters'))
+app.use('/assets', express.static(__dirname + '/hamsters'))
 
 
 app.use('/', express.static('public'))
-app.use('/assets', express.static('hamsters'))
+
 
 const battleRoute = require('./routes/battle');
 app.use('/api/battle', battleRoute);

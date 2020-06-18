@@ -34,7 +34,7 @@ function Battle() {
     const idBattle = async (id1, id2) => {
         const res = await fetch(`/api/battle/${id1}/${id2}`);
         const hamsters = await res.json();
-        console.log(hamsters)
+
         setIdHamster(hamsters);
     }
     // get all the hamsters
@@ -71,6 +71,7 @@ function Battle() {
         getHamsters()
         idBattle(id1, id2)
     }, [id1, id2])
+    const checkHamster = idHamster ? idHamster : hamsters
     return (
         <div className="battle">
             <h1>Battle Stars</h1>
