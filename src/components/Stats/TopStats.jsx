@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import StatsTable from './Table/StatsTable'
-import { fetchTopHamsters } from "./helpers/stats.js"
+import { fetchTopHamsters } from '../helpers/Stats.js'
 import './TotalStats.css'
 import { Link } from 'react-router-dom';
 function TopStats() {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { fetchTotalGames, fetchMatchup } from './helpers/stats.js'
+import { fetchTotalGames, fetchMatchup } from '../helpers/Stats.js'
 import './TotalStats.css'
 import {
     Link
@@ -29,16 +29,20 @@ function TotalStats() {
                 <table className="table">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Games</th>
-                            <th>Wins</th>
-                            <th>Defeats</th>
+                            <th>TimeStamp</th>
+                            <th>Hamster 1</th>
+                            <th>Hamster 2</th>
+                            <th>Winner</th>
                         </tr>
                     </thead>
                     <tbody>
+
                         {matchup.map((hamster, index) => (
                             <tr key={index}>
-                                <td>{hamster.name}</td>
+                                <td>{hamster.timeStamp}</td>
+                                <td>ID:{hamster.contestants.winningHamster.id} {hamster.contestants.winningHamster.name}</td>
+                                <td>ID:{hamster.contestants.opponent.id} {hamster.contestants.opponent.name}</td>
+                                <td>{hamster.winner.name}</td>
 
                             </tr>
                         ))}

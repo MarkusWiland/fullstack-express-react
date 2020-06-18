@@ -20,7 +20,7 @@ export const fetchHamster = async (setHamster, hamster1Id) => {
                 loves: hamsters.loves,
                 name: hamsters.name
             });
-
+            console.log(hamsters)
         } while (hamster1Id === hamsters.id)
 
     } catch (e) {

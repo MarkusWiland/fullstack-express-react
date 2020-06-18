@@ -55,6 +55,9 @@ function App() {
               <Route path="/battle">
                 <Battle />
               </Route>
+              <Route path="/matchup/:id1/:id2">
+                <MatchUp />
+              </Route>
               <Route path="/matchup">
                 <MatchUp />
               </Route>

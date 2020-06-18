@@ -6,9 +6,6 @@ function HamsterCard({ hamster, ham }) {
     const handleClick = () => {
         ham(hamster)
     }
-
-
-
     return (
         <>
             <div className="HamsterCard" onClick={handleClick} >

@@ -40,9 +40,7 @@ function Form() {
         try {
             e.preventDefault()
             postNewHamster(name, age, favFood, loves)
-
             setId(id + 1)
-
         } catch (err) {
             console.error(err)
         }
