@@ -9,7 +9,7 @@ app.use(express.json())
 app.use(cors())
 
 app.use(express.static(__dirname + '/../build'));
-app.use('/assets', express.static(__dirname + '/public/assets'))
+app.use('/assets', express.static(__dirname + '/public/hamsters'))
 
 
 app.use('/', express.static('public'))
