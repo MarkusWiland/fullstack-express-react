@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import HamsterCard from '../Hamsters/HamsterCard/HamsterCard';
 import { useParams } from "react-router-dom";
-import { fetchHamster } from "./helpers/randomHamster";
-import { fetchIdHamster } from "./helpers/idHamster"
-import { postHamster } from "./helpers/WinnerClick"
+import { fetchHamster } from '../helpers/RandomHamsters'
+import { fetchIdHamster } from '../helpers/Idhamster'
+import { postHamster } from '../helpers/WinnerClick'
 import Winner from '../Hamsters/Winner'
 import './Battle.css'
 
